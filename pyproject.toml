@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "neural-network-scratch"
+name = "neural-network"
 version = "0.1.0"
 description = "A neural network implementation from scratch using NumPy"
 readme = "README.md"

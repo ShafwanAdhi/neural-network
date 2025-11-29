@@ -49,6 +49,3 @@ prediction = nn.predict([1, 0])
 ## License
 
 MIT License
-```
-
----

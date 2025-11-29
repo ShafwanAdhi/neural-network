@@ -1,4 +1,3 @@
-```markdown
 # API Reference
 
 Complete reference for the Neural Network library.
@@ -182,5 +181,4 @@ Prints detailed information about the network architecture.
 from neural_network.utils.helpers import print_network_info
 
 print_network_info(nn)
-```
 ```

@@ -8,7 +8,7 @@ if os.path.exists("README.md"):
         long_description = fh.read()
 
 setup(
-    name="neural-network-scratch",
+    name="neural-network",
     version="0.1.0",
     author="Shafwan Adhi",
     author_email="your.email@example.com",

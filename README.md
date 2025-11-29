@@ -37,10 +37,10 @@ A simple, modular neural network implementation built from scratch using Python 
 
 ```bash
 # Install directly from GitHub
-pip install git+https://github.com/yourusername/neural-network-scratch.git
+pip install git+https://github.com/ShafwanAdhi/neural-network.git
 
 # Or clone and install
-git clone https://github.com/yourusername/neural-network-scratch.git
+git clone https://github.com/ShafwanAdhi/neural-network.git
 cd neural-network-scratch
 pip install .
 
@@ -51,7 +51,7 @@ pip install -e .[dev]
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/neural-network-scratch.git
+git clone https://github.com/ShafwanAdhi/neural-network.git
 cd neural-network-scratch
 
 # Create virtual environment

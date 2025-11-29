@@ -1,4 +1,3 @@
-```python
 """
 Weight Initialization Methods
 """
@@ -31,4 +30,3 @@ class WeightInitializers:
     def general_bias_generator():
         """General bias initialization"""
         return 0
-```

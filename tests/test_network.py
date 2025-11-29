@@ -1,4 +1,3 @@
-```python
 """
 Unit tests for Neural Network
 """
@@ -65,4 +64,3 @@ def test_xor_training():
 
 if __name__ == "__main__":
     pytest.main([__file__])
-```

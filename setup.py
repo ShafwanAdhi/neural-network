@@ -11,7 +11,7 @@ setup(
     name="neural-network",
     version="0.1.0",
     author="Shafwan Adhi",
-    author_email="your.email@example.com",
+    author_email="tugashafwan@gmail.com",
     description="A neural network implementation from scratch using NumPy",
     long_description=long_description,
     long_description_content_type="text/markdown",

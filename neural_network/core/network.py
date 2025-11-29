@@ -1,4 +1,3 @@
-```python
 """
 Core Neural Network Implementation
 """
@@ -284,4 +283,3 @@ class NeuralNetwork:
     def set_learning_rate(self, new_lr):
         """Update learning rate"""
         self.learning_rate = new_lr
-```

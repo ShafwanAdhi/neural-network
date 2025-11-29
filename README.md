@@ -524,10 +524,6 @@ nn = NeuralNetwork([2, 8, 'relu', 4, 'relu', 2, 'relu', 1, 'sigmoid'],
 
 A: This implementation is for single samples. For batch training, you need to modify the forward/backward pass to handle matrix operations.
 
-**Q: Why are gradient magnitudes printed?**
-
-A: For debugging vanishing/exploding gradients. If values are too small (<1e-10) or too large (>100), there's a problem with learning rate or architecture.
-
 **Q: How to save/load the model?**
 
 A: Use pickle:

@@ -31,22 +31,57 @@ A simple, modular neural network implementation built from scratch using Python 
 
 ---
 
-## Installation
+## Installation Instructions
 
-Install dependencies
+### For Users (Install from GitHub)
 
 ```bash
-pip install numpy
-```
+# Install directly from GitHub
+pip install git+https://github.com/yourusername/neural-network-scratch.git
 
-Download the `neural_network.py` file and import:
+# Or clone and install
+git clone https://github.com/yourusername/neural-network-scratch.git
+cd neural-network-scratch
+pip install .
+
+# Install with development dependencies
+pip install -e .[dev]
+```
+### For Developers
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/neural-network-scratch.git
+cd neural-network-scratch
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install in editable mode with dev dependencies
+pip install -e .[dev]
+
+# Run tests
+pytest tests/
+
+# Run examples
+python examples/xor_example.py
+```
+---
+## Usage After Installation
 
 ```python
+# Import from anywhere
 from neural_network import NeuralNetwork
+
+# Create and train
+nn = NeuralNetwork([2, 4, 'sigmoid', 1, 'sigmoid'], loss='bce', learning_rate=0.01)
+
+# Use the network
+output, history = nn.forward([0.5, 0.3])
+nn.backward(1, output, history)
 ```
-
 ---
-
 ## Quick Start (example)
 
 ```python

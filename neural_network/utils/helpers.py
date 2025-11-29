@@ -1,4 +1,3 @@
-```python
 """
 Helper functions for Neural Network
 """
@@ -80,4 +79,3 @@ def print_network_info(model):
     
     print(f"\nTotal parameters: {total_params}")
     print("=" * 50)
-```

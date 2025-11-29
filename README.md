@@ -543,7 +543,7 @@ with open('model.pkl', 'rb') as f:
 
 ## License
 
-This project is free to use for learning and development purposes.
+MIT License
 
 ## Contributing
 

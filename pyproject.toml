@@ -1,4 +1,3 @@
-```toml
 [build-system]
 requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
@@ -46,4 +45,3 @@ Issues = "https://github.com/ShafwanAdhi/neural-network/issues"
 where = ["."]
 include = ["neural_network*"]
 exclude = ["tests*", "examples*", "docs*"]
-```

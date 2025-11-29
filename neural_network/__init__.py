@@ -1,4 +1,3 @@
-```python
 """
 Neural Network From Scratch
 A simple neural network implementation using only NumPy
@@ -18,4 +17,3 @@ __all__ = [
     "LossFunctions",
     "WeightInitializers",
 ]
-```

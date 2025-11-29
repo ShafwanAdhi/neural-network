@@ -1,4 +1,3 @@
-```python
 """
 Activation Functions and Their Derivatives
 """
@@ -48,4 +47,3 @@ class ActivationFunctions:
     def der_leaky_relu(x):
         """Derivative of Leaky ReLU"""
         return 1 if x > 0 else 0.1
-```

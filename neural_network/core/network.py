@@ -183,7 +183,7 @@ class NeuralNetwork:
             history: History from forward pass
         """
         bp_z = self._backprop_bias(label, y_pred, history)
-        print(f"bp_z magnitudes: {[np.abs(np.array(layer)).max() for layer in bp_z]}")
+        # print(f"bp_z magnitudes: {[np.abs(np.array(layer)).max() for layer in bp_z]}")
         self._backprop_weights(history, bp_z)
     
     def _backprop_bias(self, label, y_pred, history):
@@ -264,7 +264,7 @@ class NeuralNetwork:
             loss = self.function_list[self.funct_list["loss"]][0](y, output)
             self.backward(y, output, history)
             
-            if verbose and (epoch % 100 == 0 or epoch == epochs - 1):
+            if verbose and (epoch % 20 == 0 or epoch == epochs - 1):
                 print(f"Epoch {epoch}, Loss: {loss}")
     
     def predict(self, X):

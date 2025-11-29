@@ -1,4 +1,3 @@
-```python
 """
 Stochastic Gradient Descent Optimizer
 (Placeholder for future optimizer implementations)
@@ -30,4 +29,3 @@ class SGD:
         for param, grad in zip(params, gradients):
             updated_params.append(param - self.learning_rate * grad)
         return updated_params
-```

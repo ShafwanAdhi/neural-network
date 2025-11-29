@@ -1,4 +1,3 @@
-```markdown
 # Examples
 
 Collection of examples demonstrating the library usage.
@@ -159,5 +158,4 @@ plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.title('Training Loss Over Time')
 plt.show()
-```
 ```

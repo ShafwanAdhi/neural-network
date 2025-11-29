@@ -1,4 +1,3 @@
-```python
 """
 Simple Linear Regression Example
 y = 2x + 1
@@ -46,4 +45,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```

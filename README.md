@@ -1,6 +1,6 @@
 # Neural Network From Scratch
 
-A complete neural network implementation from scratch using Python and NumPy with a clean and easy-to-use API.
+A simple, modular neural network implementation built from scratch using Python and NumPy. It is designed for experimentation, learning, and customization without relying on high-level machine learning libraries.
 
 ## Table of Contents
 
@@ -28,14 +28,14 @@ A complete neural network implementation from scratch using Python and NumPy wit
 - Flexible Architecture: Define network architecture easily
 - Clean API: No need to pass variables repeatedly
 - Easy Training: Built-in training loop
-- Debugging Tools: Gradient magnitude tracking
 
 ---
 
 ## Installation
 
+Install dependencies
+
 ```bash
-# Install dependencies
 pip install numpy
 ```
 
@@ -47,12 +47,12 @@ from neural_network import NeuralNetwork
 
 ---
 
-## Quick Start
+## Quick Start (example)
 
 ```python
 from neural_network import NeuralNetwork
 
-# 1. Create network: 2 input -> 4 hidden (sigmoid) -> 1 output (sigmoid)
+# 1. Create network that have 2 input -> 4 hidden (sigmoid) -> 1 output (sigmoid)
 nn = NeuralNetwork([2, 4, 'sigmoid', 1, 'sigmoid'], loss='mse', learning_rate=0.5)
 
 # 2. Training data (XOR problem)
@@ -107,11 +107,7 @@ nn = NeuralNetwork([2, 8, 'relu', 4, 'relu', 1, 'sigmoid'], loss='bce', learning
 ### 2. Forward Propagation
 
 ```python
-# Single input
 output, history = nn.forward([0.5, 0.3])
-
-# Input can also be a single value
-output, history = nn.forward(0.5)
 ```
 
 **Returns:**
@@ -130,8 +126,6 @@ nn.backward(label=y, y_pred=output, history=history)
 This method will:
 - Calculate gradients
 - Update weights and bias automatically
-- Print gradient magnitudes for debugging
-
 ---
 
 ### 4. Training
@@ -170,7 +164,7 @@ nn.train(X=[0.5, 0.3], y=1, epochs=1000, verbose=True)
 **Without activation:**
 ```python
 # Output layer without activation (for regression)
-nn = NeuralNetwork([2, 4, 'relu', 1], loss='mse')
+nn = NeuralNetwork([2, 4, 1], loss='mse')
 ```
 
 ---
@@ -260,27 +254,6 @@ Input: [0, 0], True: 0, Predicted: 0.0156
 Input: [0, 1], True: 1, Predicted: 0.9823
 Input: [1, 0], True: 1, Predicted: 0.9831
 Input: [1, 1], True: 0, Predicted: 0.0189
-```
-
----
-
-### AND Gate (Simple Binary)
-
-```python
-nn = NeuralNetwork([2, 2, 'sigmoid', 1, 'sigmoid'], loss='bce', learning_rate=0.5)
-
-X_train = [[0, 0], [0, 1], [1, 0], [1, 1]]
-y_train = [0, 0, 0, 1]
-
-for epoch in range(2000):
-    for X, y in zip(X_train, y_train):
-        output, history = nn.forward(X)
-        nn.backward(y, output, history)
-
-# Test
-for X, y in zip(X_train, y_train):
-    pred = nn.predict(X)
-    print(f"{X} AND = {y} (predicted: {pred:.2f})")
 ```
 
 ---

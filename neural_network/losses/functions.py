@@ -1,4 +1,3 @@
-```python
 """
 Loss Functions and Their Derivatives
 """
@@ -45,4 +44,3 @@ class LossFunctions:
     def der_mse(y_true, y_pred):
         """Derivative of MSE"""
         return -2 * (y_true - y_pred)
-```

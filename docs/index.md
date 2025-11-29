@@ -1,4 +1,3 @@
-```markdown
 # Neural Network From Scratch Documentation
 
 Welcome to the Neural Network From Scratch documentation.

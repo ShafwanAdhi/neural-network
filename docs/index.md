@@ -15,7 +15,7 @@ This library provides a simple, educational implementation of a neural network f
 ## Installation
 
 ```bash
-pip install git+https://github.com/yourusername/neural-network-scratch.git
+pip install git+https://github.com/ShafwanAdhi/neural-network.git
 ```
 
 ## Features

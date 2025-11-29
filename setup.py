@@ -1,19 +1,23 @@
 ```python
 from setuptools import setup, find_packages
+import os
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+# Read README if exists
+long_description = "A neural network implementation from scratch using NumPy"
+if os.path.exists("README.md"):
+    with open("README.md", "r", encoding="utf-8") as fh:
+        long_description = fh.read()
 
 setup(
-    name="neural-network",
+    name="neural-network-scratch",
     version="0.1.0",
-    author="ShafwanAdhi",
-    author_email="tugashafwan@gmail.com",
-    description="A simple, modular neural network implementation built from scratch using Python and NumPy. It is designed for experimentation, learning, and customization without relying on high-level machine learning libraries.",
+    author="Shafwan Adhi",
+    author_email="your.email@example.com",
+    description="A neural network implementation from scratch using NumPy",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ShafwanAdhi/neural-network.git",
-    packages=find_packages(),
+    url="https://github.com/ShafwanAdhi/neural-network",
+    packages=find_packages(exclude=["tests", "tests.*", "examples", "examples.*", "docs", "docs.*"]),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
@@ -25,6 +29,7 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
     python_requires=">=3.7",
@@ -35,8 +40,6 @@ setup(
         "dev": [
             "pytest>=6.0",
             "pytest-cov>=2.0",
-            "black>=21.0",
-            "flake8>=3.9",
         ],
     },
 )

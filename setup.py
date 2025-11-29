@@ -5,14 +5,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="neural-network-scratch",
+    name="neural-network",
     version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
-    description="A neural network implementation from scratch using NumPy",
+    author="ShafwanAdhi",
+    author_email="tugashafwan@gmail.com",
+    description="A simple, modular neural network implementation built from scratch using Python and NumPy. It is designed for experimentation, learning, and customization without relying on high-level machine learning libraries.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/neural-network-scratch",
+    url="https://github.com/ShafwanAdhi/neural-network.git",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",

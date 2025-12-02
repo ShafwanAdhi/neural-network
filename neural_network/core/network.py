@@ -139,13 +139,26 @@ class NeuralNetwork:
         support = [0] * n_class
 
         for i in range(n_class):
-            for j in range(n_class):
-                precision[i] += conf_matrics[j][i]
-                recall[i] += conf_matrics[i][j]
-                support[i] += conf_matrics[i][j]
-            precision[i] = conf_matrics[i][i]/precision[i]
-            recall[i] =  conf_matrics[i][i]/recall[i]
-            f1_score[i] = 0 if precision[i] == 0 or recall[i] == 0 else 2/(1/precision[i] + 1/recall[i])
+            tp = conf_matrics[i][i]  # true positive
+            sum_col = sum(conf_matrics[j][i] for j in range(n_class))  # total prediksi i
+            sum_row = sum(conf_matrics[i][j] for j in range(n_class))  # total aktual i
+            # Precision
+            if sum_col == 0:
+                precision[i] = 0.0
+            else:
+                precision[i] = tp / sum_col
+            # Recall
+            if sum_row == 0:
+                recall[i] = 0.0
+            else:
+                recall[i] = tp / sum_row
+            # F1-score
+            if precision[i] + recall[i] == 0:
+                f1_score[i] = 0.0
+            else:
+                f1_score[i] = 2 * precision[i] * recall[i] / (precision[i] + recall[i])
+            # Support
+            support[i] = sum_row
         self._print_classification_report(precision, recall, f1_score, support)
     
     def _print_classification_report(self, precision, recall, f1_score, support):

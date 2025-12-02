@@ -60,11 +60,11 @@ class ActivationFunctions:
         for i in range(len(a)): #setiap c/zn
             sum = 0
             for j in range(len(a)): #menghitung c/zn
-            if i == j:
-                del_z = a[i] * (1 - a[j])
-            else:
-                del_z = -1 * a[i] *a[j]
-            del_z *= loss_der[j]
-            sum += del_z
+                if i == j:
+                    del_z = a[i] * (1 - a[j])
+                else:
+                    del_z = -1 * a[i] *a[j]
+                del_z *= loss_der[j]
+                sum += del_z
             bp_z.append(sum)
         return bp_z

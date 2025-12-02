@@ -42,7 +42,7 @@ class NeuralNetwork:
                     WeightInitializers.he_initialization_normal],
             'leakyRelu': [ActivationFunctions.leaky_relu, ActivationFunctions.der_leaky_relu, 
                          WeightInitializers.he_initialization_normal],
-            'softmax': [softmax, der_softmax, xavier_initialization],
+            'softmax': [ActivationFunctions.softmax, ActivationFunctions.der_softmax, WeightInitializers.xavier_initialization],
             'bce': [LossFunctions.bce_loss, LossFunctions.der_bce],
             'ce': [LossFunctions.ce_loss, LossFunctions.der_ce],
             'mse': [LossFunctions.mse_loss, LossFunctions.der_mse],

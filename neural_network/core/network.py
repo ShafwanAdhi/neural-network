@@ -159,9 +159,9 @@ class NeuralNetwork:
                 f1_score[i] = 2 * precision[i] * recall[i] / (precision[i] + recall[i])
             # Support
             support[i] = sum_row
-        self._print_classification_report(precision, recall, f1_score, support)
+        self._print_classification_report(precision, recall, f1_score, support, accuracy)
     
-    def _print_classification_report(self, precision, recall, f1_score, support):
+    def _print_classification_report(self, precision, recall, f1_score, support, accuracy):
         n_classes = len(precision)
         
         total_samples = sum(support)
@@ -187,6 +187,7 @@ class NeuralNetwork:
         print("-"*50)
         print(f"{'Macro avg':<10}{macro_precision:<10.3f}{macro_recall:<10.3f}{macro_f1:<10.3f}{total_samples:<10}")
         print(f"{'Weighted avg':<10}{weighted_precision:<10.3f}{weighted_recall:<10.3f}{weighted_f1:<10.3f}{total_samples:<10}")
+        print(f'Accuracy: {accuracy}')
         
     def train_test_split(self, train_data, label_data, train_size=0.8, test_size=0.2, shuffle=True):
         n_samples = len(train_data)

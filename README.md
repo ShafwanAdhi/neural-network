@@ -207,6 +207,10 @@ nn.train(X=[0.5, 0.3], y=1, epochs=1000, verbose=True)
 ```python
 nn.metrics_evaluation(x_test, y_test)
 ```
+This method will:
+- Forward testing's dataset
+- Calculate precision, recall and f1score for each class
+- Also calculate their macro and weighted average
 ---
 ## Activation Functions
 
@@ -352,6 +356,25 @@ NeuralNetwork(layer_neuron, loss='mse', learning_rate=0.01)
 
 #### Methods
 
+##### `train_test_split(trains, labels)`
+Performs splitting dataset.
+
+**Parameters:**
+- `trains`: feature data from the dataset
+- `labels`: label/target corresponding to dataset's data
+- 
+**Returns:**
+- `x_train`: feature data used to train the model
+- `y_train`: label/target corresponding to x_train
+- `x_test`: feature data used to test the performance of the model
+- `y_test`: the label/target corresponding to x_test
+
+**Example:**
+```python
+x_train, y_train, x_test, y_test = nn.train_test_split(trains, labels)
+```
+---
+
 ##### `forward(input_data)`
 Performs forward propagation.
 
@@ -413,7 +436,19 @@ Simple training loop for single sample.
 ```python
 nn.train(X=[0.5, 0.3], y=1, epochs=5000, verbose=True)
 ```
+---
 
+##### `metrics_evaluation(x_test, y_test)`
+metrics evaluation to evaluate model.
+
+**Parameters:**
+- `x_test`: feature data used to test the performance of the model
+- `y_test`: the label/target corresponding to x_test
+
+**Example:**
+```python
+nn.metrics_evaluation(x_test, y_test)
+```
 ---
 
 ##### `set_learning_rate(new_lr)`

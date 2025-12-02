@@ -3,6 +3,7 @@ Activation Functions and Their Derivatives
 """
 
 import numpy as np
+import math
 
 
 class ActivationFunctions:

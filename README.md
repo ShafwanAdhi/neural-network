@@ -96,6 +96,9 @@ nn = NeuralNetwork([2, 4, 'sigmoid', 1, 'sigmoid'], loss='mse', learning_rate=0.
 X_train = [[0, 0], [0, 1], [1, 0], [1, 1]]
 y_train = [0, 1, 1, 0]
 
+X_test = [[0, 0], [0, 1]]
+y_test = [0, 1]
+
 # 3. Training
 for epoch in range(5000):
     for X, y in zip(X_train, y_train):
@@ -105,6 +108,9 @@ for epoch in range(5000):
 # 4. Prediction
 prediction = nn.predict([1, 0])
 print(f"Prediction: {prediction}")  # Output: ~1.0
+
+#5. Evaluation
+nn.metrics_evaluation(X_test, y_test)
 ```
 
 ---

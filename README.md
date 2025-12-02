@@ -191,14 +191,17 @@ for epoch in range(1000):
         print(f"Epoch {epoch}, Avg Loss: {total_loss / len(X_train):.4f}")
 ```
 
-**Using Built-in Train Method:**
+**Or using Built-in Train Method:**
 ```python
 # For single sample
 nn.train(X=[0.5, 0.3], y=1, epochs=1000, verbose=True)
 ```
-
 ---
-
+### 5. Evaluation
+```python
+nn.metrics_evaluation(x_test, y_test)
+```
+---
 ## Activation Functions
 
 | Function | Usage | Best For |

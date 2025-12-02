@@ -355,8 +355,8 @@ class NeuralNetwork:
         for epoch in range(epochs):
             total_loss = 0.0
             for x, label in zip(X, y):
-                y_pred, history = nn.forward(x)
-                nn.backward(label, y_pred, history)
+                y_pred, history = self.forward(x)
+                self.backward(label, y_pred, history)
                 loss = self.function_list[self.funct_list["loss"]][0](label, y_pred)
                 total_loss += loss
                 

@@ -108,6 +108,91 @@ class NeuralNetwork:
         bias = self._create_bias(layer_neuron)
         
         return weights, bias, funct_list
+
+    def metrics_evaluation(self, x_test, y_test):
+        guess_right = 0
+        for x, y in zip(x_test, y_test):
+            y_pred, history = forward(x, funct_list)
+            if np.argmax(y) == np.argmax(y_pred):
+            guess_right += 1
+        accuracy = guess_right/len(x_test)
+
+        n_class = len(y_test[0])
+        conf_matrics = []
+        for i in range(n_class):
+            matrics_temp = []
+            for j in range(n_class):
+            matrics_temp.append(0)
+            conf_matrics.append(matrics_temp)
+
+        for x, y in zip(x_test, y_test):
+            y_pred, history = forward(x, funct_list)
+            pred_idx = np.argmax(y_pred)
+            label_idx = np.argmax(y)
+            conf_matrics[label_idx][pred_idx] += 1
+
+        #menghitung precision dan recall
+        precision = [0] * n_class
+        recall = [0] * n_class
+        f1_score = [0] * n_class
+        support = [0] * n_class
+
+        for i in range(n_class):
+            for j in range(n_class):
+            precision[i] += conf_matrics[j][i]
+            recall[i] += conf_matrics[i][j]
+            support[i] += conf_matrics[i][j]
+            precision[i] = conf_matrics[i][i]/precision[i]
+            recall[i] =  conf_matrics[i][i]/recall[i]
+            f1_score[i] = 0 if precision[i] == 0 or recall[i] == 0 else 2/(1/precision[i] + 1/recall[i])
+        self._print_classification_report(precision, recall, f1_score, support)
+    
+    def _print_classification_report(self, precision, recall, f1_score, support):
+        n_classes = len(precision)
+        
+        total_samples = sum(support)
+        
+        # Menghitung macro dan weighted averages
+        macro_precision = np.mean(precision)
+        macro_recall = np.mean(recall)
+        macro_f1 = np.mean(f1_score)
+        
+        weighted_precision = np.sum(np.array(precision) * np.array(support)) / total_samples
+        weighted_recall = np.sum(np.array(recall) * np.array(support)) / total_samples
+        weighted_f1 = np.sum(np.array(f1_score) * np.array(support)) / total_samples
+        
+        # Header tabel
+        print(f"{'Class':<10}{'Precision':<10}{'Recall':<10}{'F1-score':<10}{'Support':<10}")
+        print("-"*50)
+        
+        # Print per class
+        for i in range(n_classes):
+            print(f"{i:<10}{precision[i]:<10.3f}{recall[i]:<10.3f}{f1_score[i]:<10.3f}{support[i]:<10}")
+        
+        # Print averages
+        print("-"*50)
+        print(f"{'Macro avg':<10}{macro_precision:<10.3f}{macro_recall:<10.3f}{macro_f1:<10.3f}{total_samples:<10}")
+        print(f"{'Weighted avg':<10}{weighted_precision:<10.3f}{weighted_recall:<10.3f}{weighted_f1:<10.3f}{total_samples:<10}")
+        
+    def train_test_split(self, train_data, label_data, train_size=0.8, test_size=0.2, shuffle=True):
+        n_samples = len(train_data)
+    
+        # Menentukan indeks apabila shuffle
+        indices = np.arange(n_samples)
+        if shuffle:
+            np.random.shuffle(indices)
+        
+        train_end = int(n_samples * train_size)
+        
+        train_idx = indices[:train_end]
+        test_idx = indices[train_end:]
+        
+        x_train = train_data[train_idx]
+        y_train = label_data[train_idx]
+        x_test = train_data[test_idx]
+        y_test = label_data[test_idx]
+        
+        return x_train, y_train, x_test, y_test
     
     def forward(self, input_data):
         """

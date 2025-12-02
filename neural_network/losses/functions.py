@@ -11,7 +11,7 @@ class LossFunctions:
     @staticmethod
     def bce_loss(y_true, y_pred):
         """Binary Cross Entropy Loss"""
-        epsilon = 1e-12
+        epsilon = 1e-15
         y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
         loss = - (y_true * np.log(y_pred) + (1 - y_true) * np.log(1 - y_pred))
         return loss
@@ -22,17 +22,15 @@ class LossFunctions:
         return y_pred - y_true
     
     @staticmethod
-    def ce_loss(y_true, y_pred):
-        """Cross Entropy Loss"""
-        epsilon = 1e-12
-        y_pred = np.clip(y_pred, epsilon, 1 - epsilon)
-        loss = - np.sum(y_true * np.log(y_pred), axis=-1)
+    def ce_loss(arr_label, arr_pred):
+        epsilon = 1e-15
+        arr_pred = np.clip(arr_pred, epsilon, 1.0)
+        loss = -np.sum(arr_label * np.log(arr_pred))
         return loss
     
     @staticmethod
-    def der_ce(y_true, y_pred):
-        """Derivative of Cross Entropy"""
-        return y_pred - y_true
+    def der_ce(arr_label, arr_pred):
+        return [-y / a for y, a in zip(arr_label, arr_pred)]
     
     @staticmethod
     def mse_loss(y_true, y_pred):

@@ -47,3 +47,24 @@ class ActivationFunctions:
     def der_leaky_relu(x):
         """Derivative of Leaky ReLU"""
         return 1 if x > 0 else 0.1
+
+    @staticmethod        
+    def softmax(arr):
+        exps = [math.exp(x) for x in arr]
+        total = sum(exps)
+        return [e / total for e in exps]
+
+    @staticmethod
+    def der_softmax(a, loss_der): #semuanya memiliki panjang idx yang sama
+        bp_z = []
+        for i in range(len(a)): #setiap c/zn
+            sum = 0
+            for j in range(len(a)): #menghitung c/zn
+            if i == j:
+                del_z = a[i] * (1 - a[j])
+            else:
+                del_z = -1 * a[i] *a[j]
+            del_z *= loss_der[j]
+            sum += del_z
+            bp_z.append(sum)
+        return bp_z

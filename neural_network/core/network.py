@@ -42,9 +42,10 @@ class NeuralNetwork:
                     WeightInitializers.he_initialization_normal],
             'leakyRelu': [ActivationFunctions.leaky_relu, ActivationFunctions.der_leaky_relu, 
                          WeightInitializers.he_initialization_normal],
+            'softmax': [softmax, der_softmax, xavier_initialization],
             'bce': [LossFunctions.bce_loss, LossFunctions.der_bce],
             'ce': [LossFunctions.ce_loss, LossFunctions.der_ce],
-            'mse': [LossFunctions.mse_loss, LossFunctions.der_mse]
+            'mse': [LossFunctions.mse_loss, LossFunctions.der_mse],
         }
         
         # Initialize network
@@ -195,16 +196,7 @@ class NeuralNetwork:
         return x_train, y_train, x_test, y_test
     
     def forward(self, input_data):
-        """
-        Forward propagation
-        
-        Args:
-            input_data: Input for network
-            
-        Returns:
-            result: Network output
-            history: Dictionary containing logits and activation
-        """
+
         if isinstance(input_data, (int, float)):
             input_data = [input_data]
         
@@ -241,12 +233,19 @@ class NeuralNetwork:
             logits = sum_val
             
             if layer_idx in self.funct_list:
-                activation = self.function_list[self.funct_list[layer_idx]][0](logits)
+                if self.funct_list[layer_idx] != "softmax":
+                    activation = self.function_list[self.funct_list[layer_idx]][0](logits)
+                else:
+                    activation = logits
             else:
                 activation = logits
             
             hasil_active.append(activation)
             hasil_logits.append(logits)
+        
+        if layer_idx in self.funct_list:
+            if self.funct_list[layer_idx] == "softmax":
+                hasil_active = self.function_list[self.funct_list[layer_idx]][0](hasil_active)
         
         arr_activation.append(hasil_active)
         arr_logits.append(hasil_logits)
@@ -291,6 +290,10 @@ class NeuralNetwork:
                         activ_derivative = self.function_list[self.funct_list[layer_idx]][1](
                             arr_logits[layer_idx][n_last_layer]
                         )
+                    elif self.funct_list[layer_idx] == "softmax":
+                        bp_z[-1] = self.function_list[self.funct_list[layer_idx]][1](arr_activation[layer_idx], loss_derivative)
+                        self.bias[-1] = [x - (self.learning_rate * y) for x,y in zip(self.bias[-1], bp_z[-1])]
+                        continue
                     else:
                         activ_derivative = self.function_list[self.funct_list[layer_idx]][1](
                             arr_activation[layer_idx][n_last_layer]

@@ -115,7 +115,7 @@ class NeuralNetwork:
         for x, y in zip(x_test, y_test):
             y_pred, history = forward(x, funct_list)
             if np.argmax(y) == np.argmax(y_pred):
-            guess_right += 1
+                guess_right += 1
         accuracy = guess_right/len(x_test)
 
         n_class = len(y_test[0])
@@ -123,7 +123,7 @@ class NeuralNetwork:
         for i in range(n_class):
             matrics_temp = []
             for j in range(n_class):
-            matrics_temp.append(0)
+                matrics_temp.append(0)
             conf_matrics.append(matrics_temp)
 
         for x, y in zip(x_test, y_test):
@@ -140,9 +140,9 @@ class NeuralNetwork:
 
         for i in range(n_class):
             for j in range(n_class):
-            precision[i] += conf_matrics[j][i]
-            recall[i] += conf_matrics[i][j]
-            support[i] += conf_matrics[i][j]
+                precision[i] += conf_matrics[j][i]
+                recall[i] += conf_matrics[i][j]
+                support[i] += conf_matrics[i][j]
             precision[i] = conf_matrics[i][i]/precision[i]
             recall[i] =  conf_matrics[i][i]/recall[i]
             f1_score[i] = 0 if precision[i] == 0 or recall[i] == 0 else 2/(1/precision[i] + 1/recall[i])

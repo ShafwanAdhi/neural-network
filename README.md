@@ -28,6 +28,8 @@ A simple, modular neural network implementation built from scratch using Python 
 - Flexible Architecture: Define network architecture easily
 - Clean API: No need to pass variables repeatedly
 - Easy Training: Built-in training loop
+- Data Splitting: Dividing the dataset into training, validation, and testing sets.
+- Metrics Evaluation: Such as accuracy, precision, recall, F1-score
 
 ---
 

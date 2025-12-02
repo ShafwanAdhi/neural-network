@@ -28,7 +28,7 @@ A simple, modular neural network implementation built from scratch using Python 
 - Flexible Architecture: Define network architecture easily
 - Clean API: No need to pass variables repeatedly
 - Easy Training: Built-in training loop
-- Data Splitting: Dividing the dataset into training, validation, and testing sets.
+- Data Splitting: Dividing the dataset into training and testing sets.
 - Metrics Evaluation: Such as accuracy, precision, recall, F1-score
 
 ---
@@ -140,8 +140,18 @@ nn = NeuralNetwork([2, 8, 'relu', 4, 'relu', 1, 'sigmoid'], loss='bce', learning
 - `learning_rate`: Learning rate for training (default: 0.01)
 
 ---
+### 2. Splitting Dataset
+```python
+x_train, y_train, x_test, y_test = nn.train_test_split(trains, labels)
+```
+**Returns:**
+- `x_train`: feature data used to train the model
+- `y_train`: label/target corresponding to x_train
+- `x_test`: feature data used to test the performance of the model
+- `y_test`: the label/target corresponding to x_test
+---
 
-### 2. Forward Propagation
+### 3. Forward Propagation
 
 ```python
 output, history = nn.forward([0.5, 0.3])
@@ -153,7 +163,7 @@ output, history = nn.forward([0.5, 0.3])
 
 ---
 
-### 3. Backward Propagation
+### 4. Backward Propagation
 
 ```python
 output, history = nn.forward(X)
@@ -165,7 +175,7 @@ This method will:
 - Update weights and bias automatically
 ---
 
-### 4. Training
+### 5. Training
 
 **Manual Training Loop:**
 ```python

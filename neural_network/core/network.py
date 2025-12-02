@@ -352,22 +352,17 @@ class NeuralNetwork:
                     self.weights[i][j][k] -= self.learning_rate * gradient
     
     def train(self, X, y, epochs=1000, verbose=True):
-        """
-        Simple training loop
-        
-        Args:
-            X: Input data
-            y: Labels
-            epochs: Number of epochs
-            verbose: Print loss every epoch
-        """
         for epoch in range(epochs):
-            output, history = self.forward(X)
-            loss = self.function_list[self.funct_list["loss"]][0](y, output)
-            self.backward(y, output, history)
-            
+            total_loss = 0.0
+            for x, label in zip(X, y):
+                y_pred, history = nn.forward(x)
+                nn.backward(label, y_pred, history)
+                loss = self.function_list[self.funct_list["loss"]][0](label, y_pred)
+                total_loss += loss
+                
+            avg_loss = total_loss / len(X)
             if verbose and (epoch % 20 == 0 or epoch == epochs - 1):
-                print(f"Epoch {epoch}, Loss: {loss}")
+                print(f"Epoch {epoch}, Avg Loss: {avg_loss:.4f}")
     
     def predict(self, X):
         """Prediction without history"""

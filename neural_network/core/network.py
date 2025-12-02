@@ -113,7 +113,7 @@ class NeuralNetwork:
     def metrics_evaluation(self, x_test, y_test):
         guess_right = 0
         for x, y in zip(x_test, y_test):
-            y_pred, history = forward(x, funct_list)
+            y_pred, history = self.forward(x, self.funct_list)
             if np.argmax(y) == np.argmax(y_pred):
                 guess_right += 1
         accuracy = guess_right/len(x_test)
@@ -127,7 +127,7 @@ class NeuralNetwork:
             conf_matrics.append(matrics_temp)
 
         for x, y in zip(x_test, y_test):
-            y_pred, history = forward(x, funct_list)
+            y_pred, history = self.forward(x, self.funct_list)
             pred_idx = np.argmax(y_pred)
             label_idx = np.argmax(y)
             conf_matrics[label_idx][pred_idx] += 1

@@ -357,17 +357,17 @@ class NeuralNetwork:
             for x, label in zip(X, y):
                 y_pred, history = self.forward(x)
                 self.backward(label, y_pred, history)
-                loss = self.function_list[self.funct_list["loss"]][0](label, y_pred)
-                total_loss += loss
+            #     loss = self.function_list[self.funct_list["loss"]][0](label, y_pred)
+            #     total_loss += loss
 
-            avg_loss = total_loss / len(X)
-            if hasattr(avg_loss, 'item'):
-                avg_loss = avg_loss.item()
-            elif isinstance(avg_loss, np.ndarray):
-                avg_loss = float(avg_loss)
+            # avg_loss = total_loss / len(X)
+            # if hasattr(avg_loss, 'item'):
+            #     avg_loss = avg_loss.item()
+            # elif isinstance(avg_loss, np.ndarray):
+            #     avg_loss = float(avg_loss)
                 
-            if verbose and (epoch % 20 == 0 or epoch == epochs - 1):
-                print(f"Epoch {epoch}, Avg Loss: {avg_loss:.4f}")
+            # if verbose and (epoch % 20 == 0 or epoch == epochs - 1):
+            #     print(f"Epoch {epoch}, Avg Loss: {avg_loss:.4f}")
     
     def predict(self, X):
         """Prediction without history"""

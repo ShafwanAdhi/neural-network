@@ -203,7 +203,7 @@ for epoch in range(1000):
 nn.train(X=[0.5, 0.3], y=1, epochs=1000, verbose=True)
 ```
 ---
-### 5. Evaluation
+### 6. Evaluation
 ```python
 nn.metrics_evaluation(x_test, y_test)
 ```
@@ -362,7 +362,7 @@ Performs splitting dataset.
 **Parameters:**
 - `trains`: feature data from the dataset
 - `labels`: label/target corresponding to dataset's data
-- 
+  
 **Returns:**
 - `x_train`: feature data used to train the model
 - `y_train`: label/target corresponding to x_train

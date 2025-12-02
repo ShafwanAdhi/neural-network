@@ -187,7 +187,7 @@ class NeuralNetwork:
         print("-"*50)
         print(f"{'Macro avg':<10}{macro_precision:<10.3f}{macro_recall:<10.3f}{macro_f1:<10.3f}{total_samples:<10}")
         print(f"{'Weighted avg':<10}{weighted_precision:<10.3f}{weighted_recall:<10.3f}{weighted_f1:<10.3f}{total_samples:<10}")
-        print(f'Accuracy: {accuracy}')
+        print(f'Accuracy: {accuracy:.3f}')
         
     def train_test_split(self, train_data, label_data, train_size=0.8, test_size=0.2, shuffle=True):
         n_samples = len(train_data)

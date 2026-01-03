@@ -118,18 +118,20 @@ class NeuralNetwork:
                 guess_right += 1
         accuracy = guess_right/len(x_test)
 
-        n_class = len(y_test[0])
-        conf_matrics = []
-        for i in range(n_class):
-            matrics_temp = []
-            for j in range(n_class):
-                matrics_temp.append(0)
-            conf_matrics.append(matrics_temp)
+        n_class = len(np.unique(y_test))
 
         for x, y in zip(x_test, y_test):
-            y_pred, history = self.forward(x)
+            y_pred, _ = self.forward(x)
+            if y == np.argmax(y_pred):
+                guess_right += 1
+        accuracy = guess_right / len(x_test)
+        
+        conf_matrics = [[0]*n_class for _ in range(n_class)]
+        
+        for x, y in zip(x_test, y_test):
+            y_pred, _ = self.forward(x)
             pred_idx = np.argmax(y_pred)
-            label_idx = np.argmax(y)
+            label_idx = y
             conf_matrics[label_idx][pred_idx] += 1
 
         #menghitung precision dan recall

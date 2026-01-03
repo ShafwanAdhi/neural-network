@@ -51,7 +51,8 @@ class ActivationFunctions:
 
     @staticmethod        
     def softmax(arr):
-        exps = [math.exp(x) for x in arr]
+        max_val = max(arr)        
+        exps = [math.exp(x - max_val) for x in arr]
         total = sum(exps)
         return [e / total for e in exps]
 
